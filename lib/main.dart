@@ -28,9 +28,29 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("SUZURI"),
       ),
-      body: Center(
-        child: Text("Hello, SUZURI!"),
-      ),
+      body: _productsList(context),
     );
   }
+
+
+    // Widgetを返すメソッド
+    // 引数はBuildContextで、呼び出し側のbuildで持っているものを渡す
+    Widget _productsList(BuildContext context) {
+      return Container(
+        child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          childAspectRatio: 0.7,
+        ),
+        itemCount: 6,
+        itemBuilder: (context, index) {
+          return Container(
+            color: Colors.grey,
+            margin: EdgeInsets.all(16),
+          );
+        }),
+      );
+    }
 }
